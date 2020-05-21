@@ -1,4 +1,8 @@
 
+//variables
+let varSubject;
+let varText;
+let mailOptions;
 //password security
 require('dotenv').config();
 
@@ -28,12 +32,21 @@ app.listen(3000, () => {
 
 
   const sendMail = (user, callback) => {
+
+    mailOptions = {
+      from: `"Ben Dupont", "ben.dupont@student.ap.be"`,
+      to: `benooz1998@gmail.com`,
+      subject: varSubject,
+      text : varText
+    };
+
+    
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: "eas.outlook.com",
       port: 587,
       secure: false,
       auth: {
-        user: /*process.env.EMAIL*/'ben.dupont@student.ap.be',
+        user: /*process.env.EMAIL*/'s108652@ap.be',
         pass: /*process.env.PASSWORD*/'Wakeboard1'
       }
     }); 
@@ -45,6 +58,10 @@ app.listen(3000, () => {
 app.post("/sendmail", (req, res) => {
     console.log("request came");
     let user = req.body.email;
+    varSubject = req.body.subject;
+    varText = req.body.text;
+
+    
 
     console.log("send email to " + user);
     sendMail(user, (err, info) => {
@@ -55,6 +72,9 @@ app.post("/sendmail", (req, res) => {
       } else {
         console.log("Email has been sent");
         res.send(info);
+        console.log(varSubject);
+        res.send(varText);
+        
       }
     });
   });
@@ -62,11 +82,6 @@ app.post("/sendmail", (req, res) => {
 
   
 
-  const mailOptions = {
-    from: `"Ben Dupont", "ben.dupont@student.ap.be"`,
-    to: `benooz1998@gmail.com`,
-    subject: "Subject",
-    text : "it's workihng"
-  };
+   
   
  
