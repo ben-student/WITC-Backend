@@ -1,7 +1,8 @@
-FROM node:7
-WORKDIR /app
-COPY package.json /app
+FROM node:10.9.0
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package.json /usr/src/app
 RUN npm install
-COPY . /app
-CMD node server.js
+COPY . /usr/src/app
 EXPOSE 8081
+CMD ["node", "server.js"]
