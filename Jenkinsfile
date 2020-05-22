@@ -8,7 +8,7 @@ pipeline {
         stage('test'){
             steps{
                 echo 'Testing this build'
-                sh 'echo mycustomenv'
+                
             }
         }
     }

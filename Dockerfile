@@ -17,4 +17,3 @@ COPY . .
 
 EXPOSE 8080
 CMD [ "node", "server.js" ]
-ENV mycostumenv="Docker build is being processed"
