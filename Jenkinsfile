@@ -3,7 +3,7 @@ node {
 
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhubcredentials') {
 
-        def customImage = docker.build("witc_backend")
+        def customImage = docker.build("benstudent/witc_backend")
 
         /* Push the container to the custom Registry */
         customImage.push()
