@@ -11,6 +11,7 @@ node {
         sh "echo ${id}"
         
         sh "docker image rm -f ${id}"
+        sh "docker image rm -f ${id}"
         
     }
 }
