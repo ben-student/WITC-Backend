@@ -22,7 +22,7 @@ user='';
 
 //configure the Express middleware to accept CORS requests and parse request body into JSON
 app.use(cors());
-app.use(bodyParser.json());Blocked
+app.use(bodyParser.json());
 
 // var corsOptions = {
 //   origin: '*',
