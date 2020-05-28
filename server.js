@@ -24,6 +24,11 @@ user='';
 app.use(cors());
 app.use(bodyParser.json());
 
+var corsOptions = {
+  origin: '*',
+  optionsSuccesStatus: 200
+}
+
 
 //start application server on port 3000
 app.listen(3000, () => {
@@ -55,7 +60,7 @@ app.listen(3000, () => {
   }
 
 // define a sendmail endpoint, which will send emails and response with the corresponding status
-app.post("/sendmail", (req, res) => {
+app.post("/sendmail", cors(corsOptions) ,(req, res) => {
     console.log("request came");
     let user = req.body.email;
     varSubject = req.body.subject;
