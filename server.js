@@ -22,13 +22,17 @@ user='';
 
 //configure the Express middleware to accept CORS requests and parse request body into JSON
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json());Blocked
 
-var corsOptions = {
-  origin: '*',
-  optionsSuccesStatus: 200
-}
+// var corsOptions = {
+//   origin: '*',
+//   optionsSuccesStatus: 200
+// }
 
+app.use(function(req,res,next){
+  res.header("Acces-Control-Allow-Origin", "*");
+  res.header("Acces-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
 
 //start application server on port 3000
 app.listen(3000, () => {
@@ -60,7 +64,7 @@ app.listen(3000, () => {
   }
 
 // define a sendmail endpoint, which will send emails and response with the corresponding status
-app.post("/sendmail", cors(corsOptions) ,(req, res) => {
+app.post("/sendmail" ,(req, res) => {
     console.log("request came");
     let user = req.body.email;
     varSubject = req.body.subject;
