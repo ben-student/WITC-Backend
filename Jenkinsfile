@@ -11,7 +11,7 @@ node {
         sh "echo ${id}"
         
         sh "docker image rm -f ${id}"
-        sh "docker image rm -f ${id}"
+        sh "docker image rm -f registry.hub.docker.com/benstudent/witc_backend"
         
     }
 }
