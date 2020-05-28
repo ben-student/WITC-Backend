@@ -7,8 +7,9 @@ node {
 
         /* Push the container to the custom Registry */
         customImage.push()
+        def id = customImage.id
         
-        sh "docker image rm -f benstudent/witc_backend"
+        sh "docker image rm -f ${id}"
         
     }
 }
